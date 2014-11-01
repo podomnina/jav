@@ -191,35 +191,7 @@ public class main1 extends Application {
         //change a cursor when it is over circle
         circle.setCursor(Cursor.HAND);
 
-        circle.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent me) {
-                double dragX = me.getSceneX() - dragAnchor.getX();
-                double dragY = me.getSceneY() - dragAnchor.getY();
-                //calculate new position of the circle
-                double newXPosition = initX + dragX;
-                double newYPosition = initY + dragY;
 
-                double FirstX = circle.getTranslateX();
-                double FirstY = circle.getTranslateY();
-                int NumberOfCircle=-1;
-                //if new position do not exceeds borders of the rectangle, translate to this position
-                for (int j=0;j<vertexList.size();j++)
-                {
-                    if ((FirstX==vertexList.get(j).getX())&&(FirstY==vertexList.get(j).getY()))
-                        NumberOfCircle = j;
-                }
-
-                if ((newXPosition>=circle.getRadius()) && (newXPosition<=750-circle.getRadius())&&(NumberOfCircle>=0)) {
-                    circle.setTranslateX(newXPosition);
-                    vertexList.get(NumberOfCircle).setX(newXPosition);
-                }
-                if ((newYPosition>=50+circle.getRadius())&&(newYPosition>=circle.getRadius()) && (newYPosition<=450-circle.getRadius())&&(NumberOfCircle>=0)){
-                    circle.setTranslateY(newYPosition);
-                    vertexList.get(NumberOfCircle).setY(newYPosition);
-                }
-                // showOnConsole(name + " was dragged (x:" + dragX + ", y:" + dragY +")");
-            }
-        });
         circle.setOnMouseEntered(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
                 Tooltip tooltip = new Tooltip(circle.getId());
