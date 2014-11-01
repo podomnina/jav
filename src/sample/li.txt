@@ -1,0 +1,27 @@
+circle.setOnMousePressed(new EventHandler<MouseEvent>() {
+
+public void handle(MouseEvent me) {
+final Line line = new Line();
+        line.setStartX(me.getSceneX());
+        line.setStartY(me.getSceneY());
+        line.setEndX(me.getSceneX());
+        line.setEndY(me.getSceneY());
+
+        circle.setOnMouseDragged(new EventHandler<MouseEvent>() {
+public void handle(MouseEvent me) {
+
+        line.setEndX(me.getSceneX());
+        line.setEndY(me.getSceneY());
+
+
+        }
+        });
+        line.onDragEnteredProperty();
+        line.setFill(null);
+        line.setStroke(javafx.scene.paint.Color.RED);
+        line.setStrokeWidth(2);
+
+        // show the line shape;
+        root.getChildren().add(line);
+        }
+        });
